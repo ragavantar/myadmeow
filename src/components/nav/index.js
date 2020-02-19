@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import "./styles.scss";
 
@@ -12,7 +13,7 @@ const Data = {
         {
             type: "link",
             text: "Link",
-            "url": ""
+            url: "/test"
         },
         {
             type: "menu",
@@ -20,11 +21,11 @@ const Data = {
             sub: [
                 {
                     text: "sub 1",
-                    url: ""
+                    url: "/about"
                 },
                 {
                     text: "sub 2",
-                    url: ""
+                    url: "/test"
                 }
             ]
         }
@@ -44,7 +45,7 @@ class Nav extends Component {
     getLabelElement = ele => <div className="label">{ele.text}</div>
 
     getLinkElement = ele => {
-        return <div className="link">{ele.text}</div>
+        return <div className="link"><Link to={ele.url}>{ele.text}</Link></div>
     }
 
     getMenuElement = ele => {
@@ -52,7 +53,7 @@ class Nav extends Component {
             {ele.text} &#x25BE;
             <div className="sub">
                 {
-                    ele.sub.map(item => <div className="link">{item.text}</div>)
+                    ele.sub.map(item => <div className="link"><Link to={item.url}>{item.text}</Link></div>)
                 }
                 <div className="link">Sub 1</div>
                 <div className="link">Sub 2</div>
